@@ -1,9 +1,10 @@
 import { actividadSchema } from "../schemas/actividad.js"
+import { ActividadModel } from "../models/actividad.js"
 
-export class actividadController {
+export class ActividadController {
     static getAll = async (req, res) => {
         try{
-        const actividades = await //aca va el modelo
+        const actividades = await ActividadModel.getAll()
         res.json(actividades)
         res.status(200).end()
         } catch (error) {
@@ -15,7 +16,7 @@ export class actividadController {
     static getById = async (req, res) => {
         try{
         const { id } = req.params
-        const actividad = await //aca va el modelo
+        const actividad = await ActividadModel.getById(id)
         res.json(actividad)
         res.status(200).end()
         } catch (error) {
@@ -26,7 +27,7 @@ export class actividadController {
     static postActividad = async (req, res) => {
         try {
             const validated_input = actividadSchema.parse(req.body);
-            await //aca va el modelo
+            await ActividadModel.postActividad(validated_input)
             res.status(201).json({"ok": true}).end(); 
         } catch (error) {
             console.error(error);
@@ -36,7 +37,7 @@ export class actividadController {
     static deleteActividad = async (req, res) => {
         try{
         const { id } = req.params
-        await //aca va el modelo
+        await ActividadModel.deleteById(id)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);
@@ -47,7 +48,7 @@ export class actividadController {
         try{
         const { id } = req.params
         const validated_input = actividadSchema.parse(req.body);
-        await //aca va el modelo
+        await ActividadModel.updateActividad(id, validated_input)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);

@@ -1,18 +1,18 @@
 import { Router } from "express"
-
+import { EspacioController, CategoriaController } from "../controllers/espacio"
 
 export const espacioRouter = Router()
 
 // CRUD espacios
-espacioRouter.get('/espacio', console.log("devuelve todos los espacios"))
-espacioRouter.get('/espacio/:id', console.log("devuelve un espacio"))
-espacioRouter.post('/espacio', console.log("crea un espacio"))
-espacioRouter.patch('/espacio/:id', console.log("actualiza un espacio"))
-espacioRouter.delete('/espacio/:id', console.log("borra un espacio"))
+espacioRouter.get('/espacio', EspacioController.getAll())
+espacioRouter.get('/espacio/:id', EspacioController.getById())
+espacioRouter.post('/espacio', EspacioController.postEspacio())
+espacioRouter.put('/espacio/:id', EspacioController.updateEspacio())
+espacioRouter.delete('/espacio/:id', EspacioController.deleteEspacio())
 
 //CRUD categorias
-categoriaRouter.get('/categoria', console.log("devuelve todas las categorias"))
-categoriaRouter.get('/categoria/:id', console.log("devuelve una categoria"))
-categoriaRouter.post('/categoria', console.log("crea una categoria"))
-categoriaRouter.patch('/categoria/:id', console.log("actualiza una categoria"))
-categoriaRouter.delete('/categoria/:id', console.log("borra una categoria"))
+categoriaRouter.get('/categoria', CategoriaController.getAll())
+categoriaRouter.get('/categoria/:id', CategoriaController.getById())
+categoriaRouter.post('/categoria', CategoriaController.postCategoria())
+categoriaRouter.put('/categoria/:id', CategoriaController.updateCategoria())
+categoriaRouter.delete('/categoria/:id', CategoriaController.deleteCategoria())

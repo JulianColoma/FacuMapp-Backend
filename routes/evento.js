@@ -1,12 +1,12 @@
 import { Router } from "express"
-
+import { EventoController } from "../controllers/evento"
 
 export const eventoRouter = Router()
 
 // CRUD eventoes
-eventoRouter.get('/evento', console.log("devuelve todos los eventos"))
-eventoRouter.get('/evento/:id', console.log("devuelve un evento"))
-eventoRouter.post('/evento', console.log("crea un evento"))
-eventoRouter.patch('/evento/:id', console.log("actualiza un evento"))
-eventoRouter.delete('/evento/:id', console.log("borra un evento"))
+eventoRouter.get('/evento', EventoController.getAll())
+eventoRouter.get('/evento/:id', EventoController.getById())
+eventoRouter.post('/evento', EventoController.postEvento())
+eventoRouter.put('/evento/:id', EventoController.updateEvento())
+eventoRouter.delete('/evento/:id', EventoController.deleteEvento())
 

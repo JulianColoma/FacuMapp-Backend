@@ -1,10 +1,10 @@
 import {EspacioSchema} from "../schemas/espacio.js"
 import { CategoriaSchema } from "../schemas/espacio.js"
-
-export class espaciosController {
+import {EspacioModel, CategoriaModel} from "../models/espacio.js"
+export class EspacioController {
     static getAll = async (req, res) => {
         try{
-        const espacios = await //aca va el modelo
+        const espacios = await EspacioModel.getAll()
         res.json(espacios)
         res.status(200).end()
         } catch (error) {
@@ -16,7 +16,7 @@ export class espaciosController {
     static getById = async (req, res) => {
         try{
         const { id } = req.params
-        const espacios = await //aca va el modelo
+        const espacios = await EspacioModel.getById(id)
         res.json(espacios)
         res.status(200).end()
         } catch (error) {
@@ -27,7 +27,7 @@ export class espaciosController {
     static postEspacio = async (req, res) => {
         try {
             const validated_input = EspacioSchema.parse(req.body);
-            await //aca va el modelo
+            await EspacioModel.postEspacio(validated_input)
             res.status(201).json({"ok": true}).end(); 
         } catch (error) {
             console.error(error);
@@ -37,7 +37,7 @@ export class espaciosController {
     static deleteEspacio = async (req, res) => {
         try{
         const { id } = req.params
-        await //aca va el modelo
+        await EspacioModel.deleteById(id)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);
@@ -48,7 +48,7 @@ export class espaciosController {
         try{
         const { id } = req.params
         const validated_input = EspacioSchema.parse(req.body);
-        await //aca va el modelo
+        await EspacioModel.updateEspacio(id, validated_input)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);
@@ -59,7 +59,7 @@ export class espaciosController {
 export class CategoriaController {
     static getAll = async (req, res) => {
         try{
-        const categorias = await //aca va el modelo
+        const categorias = await CategoriaModel.getAll()
         res.json(categorias)
         res.status(200).end()
         } catch (error) {
@@ -71,7 +71,7 @@ export class CategoriaController {
     static getById = async (req, res) => {
         try{
         const { id } = req.params
-        const categoria = await //aca va el modelo
+        const categoria = await CategoriaModel.getById(id)
         res.json(categoria)
         res.status(200).end()
         } catch (error) {
@@ -82,7 +82,7 @@ export class CategoriaController {
     static postCategoria = async (req, res) => {
         try {
             const validated_input = CategoriaSchema.parse(req.body);
-            await //aca va el modelo
+            await CategoriaModel.postCategoria(validated_input)
             res.status(201).json({"ok": true}).end(); 
         } catch (error) {
             console.error(error);
@@ -92,7 +92,7 @@ export class CategoriaController {
     static deleteCategoria = async (req, res) => {
         try{
         const { id } = req.params
-        await //aca va el modelo
+        await CategoriaModel.deleteById(id)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);
@@ -103,7 +103,7 @@ export class CategoriaController {
         try{
         const { id } = req.params
         const validated_input = CategoriaSchema.parse(req.body);
-        await //aca va el modelo
+        await CategoriaModel.updateCategoria(id, validated_input)
         res.status(200).json({"ok": true}).end()
         } catch (error) {
             console.error(error);

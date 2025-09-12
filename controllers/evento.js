@@ -1,6 +1,6 @@
 import {EventoSchema} from "../schemas/evento.js"
 
-export class eventoController {
+export class EventoController {
     static getAll = async (req, res) => {
         try{
         const eventos = await //aca va el modelo

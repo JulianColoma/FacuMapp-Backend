@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS espacio (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT
-);
+); 
 
 
 CREATE TABLE IF NOT EXISTS evento (
