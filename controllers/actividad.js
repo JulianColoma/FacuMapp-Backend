@@ -1,3 +1,4 @@
+import { actividadSchema } from "../schemas/actividad.js"
 
 export class actividadController {
     static getAll = async (req, res) => {
@@ -24,6 +25,7 @@ export class actividadController {
     }
     static postActividad = async (req, res) => {
         try {
+            const validated_input = actividadSchema.parse(req.body);
             await //aca va el modelo
             res.status(201).json({"ok": true}).end(); 
         } catch (error) {
@@ -44,6 +46,7 @@ export class actividadController {
     static updateActividad = async (req, res) => {
         try{
         const { id } = req.params
+        const validated_input = actividadSchema.parse(req.body);
         await //aca va el modelo
         res.status(200).json({"ok": true}).end()
         } catch (error) {
